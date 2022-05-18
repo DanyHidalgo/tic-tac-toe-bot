@@ -82,6 +82,7 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
     H = board[2][1]
     I = board[2][2]
 
+    # Start
     if A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I =="-":
        
         a = randint(0, 1)
@@ -130,7 +131,7 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
         return [2, 2]
 
 
-       # Defense tactic
+    # Defense tactic
     if A == "-" and B == riv and C == riv or A == "-" and D == riv and G == riv or A == "-" and E == riv and I == riv:
         return [0, 0]
     
@@ -157,6 +158,33 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
     
     if  G == riv and I == riv and H == "-" or B == riv and D == riv and H == "-":
         return [2, 1]
+
+
+
+    # Opening tactic 1.0
+    if F == player_id and E == "-":
+        return [1, 1]
+    
+    if F == player_id and E == player_id and D == "-":
+        return [1, 0]
+    
+    if F == player_id and E == player_id and C == "-":
+        return [0, 2]
+    
+    if F == player_id and C == player_id and I == "-":
+        return [2, 2]
+    
+    if C == player_id and E == player_id and G == "-":
+        return [2, 0]
+    
+
+
+    # Opening tactic 1.1
+    if F == player_id and E == riv and I =="-":
+        return [2, 2]
+    
+    if F == player_id and I == player_id and C == "-":
+        return [0, 2]
 
 
 
