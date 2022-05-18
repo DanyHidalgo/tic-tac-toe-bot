@@ -131,6 +131,7 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
         return [2, 2]
 
 
+
     # Defense tactic
     if A == "-" and B == riv and C == riv or A == "-" and D == riv and G == riv or A == "-" and E == riv and I == riv:
         return [0, 0]
@@ -188,6 +189,24 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
 
 
 
+    # Opening tactic 2.0
+    if B == player_id and C == "-":
+        return [0, 2]
+
+    if B == player_id and C == player_id and A == "-":
+        return [0, 0]
+
+    if B == player_id and C == player_id and E == "-":
+        return [1, 1]
+
+    if B == player_id and E == player_id and H == "-":
+        return [2, 1]
+
+    if C == player_id and E == player_id and G == "-":
+        return [2, 0]
+
+
+    
     else:
         row = randint(0, 2)
         column = randint(0, 2)
