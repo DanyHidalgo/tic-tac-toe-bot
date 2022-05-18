@@ -121,7 +121,45 @@ def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
         return [2, 2]
 
     
+
+    # Defense start
+    if A == riv and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I =="-"or A == "-" and B == riv and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I =="-" or A == "-" and B == "-" and C == riv and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I =="-" or A == "-" and B == "-" and C == "-" and D == riv and E == "-" and F == "-" and G == "-" and H == "-" and I =="-" or A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == riv and G == "-" and H == "-" and I =="-" or A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == riv and H == "-" and I =="-" or A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == riv and I =="-" or A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I == riv:
+        return [1, 1]
     
+    if A == "-" and B == "-" and C == "-" and D == "-" and E == riv and F == "-" and G == "-" and H == "-" and I =="-":
+        return [2, 2]
+
+
+       # Defense tactic
+    if A == "-" and B == riv and C == riv or A == "-" and D == riv and G == riv or A == "-" and E == riv and I == riv:
+        return [0, 0]
+    
+    if A == riv and B == riv and C == "-" or E == riv and G == riv and C == "-" or I == riv and F == riv and C == "-":
+        return [0, 2]
+
+    if D == riv and E == riv and F == "-" or E == riv and F == "-" and I == riv:
+        return [1, 2]
+
+    if D == "-" and E == riv and F == riv or D == "-" and A == riv and G == riv:
+        return [1, 0]
+    
+    if D == riv and E == "-" and F == riv or B == riv and E == "-" and H == riv or A == riv and E == "-" and I == riv or C == riv and E == "-" and G == riv:
+        return [1, 1]
+    
+    if I == "-" and H == riv and G == riv or I == "-" and C == riv and F == riv or I == "-" and E == riv and A == riv:
+        return [2, 2]
+    
+    if H == riv and E == riv and B == "-" or A == riv and C == riv and B == "-":
+        return [0, 1]
+     
+    if C == riv and E == riv and G == "-" or A == riv and D == riv and G == "-" or I == riv and H == riv and G == "-":
+        return [2, 0]
+    
+    if  G == riv and I == riv and H == "-" or B == riv and D == riv and H == "-":
+        return [2, 1]
+
+
+
     else:
         row = randint(0, 2)
         column = randint(0, 2)
