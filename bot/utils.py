@@ -65,13 +65,67 @@ def read_board() -> list:
     return board
 
 
-def decide_move(board: list, player_id: str) -> list[int, int]:
+def decide_move(board: list, player_id: str, riv: str) -> list[int, int]:
     """
     Decides next move to make.
     """
-    row = randint(0, 2)
-    column = randint(0, 2)
-    return [row, column]
+    
+    A = board[0][0]
+    B = board[0][1]
+    C = board[0][2]
+
+    D = board[1][0]
+    E = board[1][1]
+    F = board[1][2]
+
+    G = board[2][0]
+    H = board[2][1]
+    I = board[2][2]
+
+    if A == "-" and B == "-" and C == "-" and D == "-" and E == "-" and F == "-" and G == "-" and H == "-" and I =="-":
+       
+        a = randint(0, 1)
+
+        if a == 1:
+            return [1, 2]
+
+        if a == 0:
+            return [0, 1]
+    
+    # Possible ways to win
+    if E == player_id and D == "-" and F == player_id or D == "-" and A == player_id and G == player_id:
+        return [1, 0]
+    
+    if A == "-" and B == player_id and C == player_id or A == "-" and D == player_id and G == player_id or A == "-" and E == player_id and I == player_id:
+        return [0, 0]
+
+    if A == player_id and B == player_id and C == "-" or  E == player_id and G == player_id and C == "-" or I == player_id and F == player_id and C == "-":
+        return [0, 2]
+    
+    if  H == player_id and E == player_id and B == "-" or A == player_id and C == player_id and B == "-":
+        return [0, 1]
+    
+    if D == player_id and E == "-" and F == player_id or B == player_id and E == "-" and H == player_id or A == player_id and E == "-" and I == player_id or C == player_id and E == "-" and G == player_id:
+        return [1, 1]
+    
+    if  D == player_id and E == player_id and F == "-" or E == player_id and F == "-" and I == player_id:
+        return [1, 2]
+
+    if C == player_id and E == player_id and G == "-" or A == player_id and D == player_id and G == "-" or I == player_id and H == player_id and G == "-":
+        return [2, 0]
+    
+    if G == player_id and I == player_id and H == "-" or B == player_id and D == player_id and H == "-":
+        return [2, 1]
+    
+    if I == "-" and H == player_id and G == player_id or I == "-" and C == player_id and F == player_id or I == "-" and C == player_id and F == player_id:
+        return [2, 2]
+
+    
+    
+    else:
+        row = randint(0, 2)
+        column = randint(0, 2)
+        return [row, column]
 
 
 def validate_move(board: list, move: list) -> bool:

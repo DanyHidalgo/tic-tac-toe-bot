@@ -18,6 +18,12 @@ def main():
 
     # Register is open now, let's register as player
     PLAYER_ID = utils.register_user(NAME)
+
+    if PLAYER_ID == "X":
+        riv = "O"
+    elif PLAYER_ID == "O":
+        riv = "X"
+
     print("Registered successfully as {}, player ID is: {}\n".format(NAME, PLAYER_ID))
     sleep(2)
 
@@ -45,7 +51,7 @@ def main():
 
             print("Deciding move...\n")
             sleep(1)
-            next_move = utils.decide_move(board, PLAYER_ID)
+            next_move = utils.decide_move(board, PLAYER_ID, riv)
             valid_move = utils.validate_move(board, next_move) # Validates next move
 
         print("Move to send, row: {}, col: {}\n".format(next_move[0], next_move[1]))
